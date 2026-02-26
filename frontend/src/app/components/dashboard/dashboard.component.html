@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Real-Time Transaction Dashboard</h1>
+  <div class="create-section">
+    <h2>Create New Transaction</h2>
+    <input [(ngModel)]="newTransaction.customerName" placeholder="Customer Name">
+    <input [(ngModel)]="newTransaction.productName" placeholder="Product Name">
+    <input [(ngModel)]="newTransaction.amount" type="number" placeholder="Amount">
+    <button (click)="createTransaction()">Create Transaction</button>
+  </div>
+  <div class="transactions-list">
+    <h2>Transactions (Real-Time Updates)</h2>
+    @for (transaction of transactions(); track $index) {
+      <div class="transaction-card"
+        [class.pending]="transaction.status === 'Pending'"
+        [class.processing]="transaction.status === 'Processing'"
+        [class.completed]="transaction.status === 'Completed'"
+        [class.failed]="transaction.status === 'Failed'">
+      
+        <div class="transaction-header">
+          <span class="transaction-id">{{ transaction.transactionId }}</span>
+          <span class="status-badge">{{ transaction.status }}</span>
+        </div>
+        <div class="transaction-body">
+          <p><strong>Customer:</strong> {{ transaction.customerName }}</p>
+          <p><strong>Product:</strong> {{ transaction.productName }}</p>
+          <p><strong>Amount:</strong> {{ transaction.amount | currency:'BRL' }}</p>
+          <p><strong>Created:</strong> {{ transaction.createdAt | date:'short' }}</p>
+          @if (transaction.processedAt) {
+            <p>
+              <strong>Processed:</strong> {{ transaction.processedAt | date:'short' }}
+            </p>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

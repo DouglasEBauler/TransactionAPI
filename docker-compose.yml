@@ -1,0 +1,19 @@
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.2.1
+    container_name: kafka
+    ports:
+      - "9092:9092"      
+      - "8082:8082"      
+    command:
+      - redpanda start
+      - --kafka-addr 0.0.0.0:9092
+      - --advertise-kafka-addr localhost:9092
+      - --smp 1
+      - --overprovisioned
+      - --set redpanda.enable_transactions=true
+
+  # mongodb:
+  #   image: mongo:7.0
+  #   ports:
+  #     - "27017:27017"

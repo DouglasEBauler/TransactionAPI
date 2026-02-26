@@ -1,0 +1,99 @@
+.container { 
+  max-width: 1200px; 
+  margin: 20px auto; 
+  padding: 20px; 
+}
+
+h1 { 
+  text-align: center; 
+  color: #333; 
+}
+
+.create-section {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.create-section input {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.create-section button {
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.transactions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.transaction-card {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+.transaction-card.pending { 
+  border-color: #FFC107; 
+  background: #FFF9C4; 
+}
+
+.transaction-card.processing { 
+  border-color: #2196F3; 
+  background: #E3F2FD; 
+  animation: pulse 1s infinite; 
+}
+
+.transaction-card.completed { 
+  border-color: #4CAF50; 
+  background: #E8F5E9; 
+}
+
+.transaction-card.failed { 
+  border-color: #F44336; 
+  background: #FFEBEE; 
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  float: right;
+}
+
+.pending .status-badge { 
+  background: #FFC107; 
+}
+
+.processing .status-badge { 
+  background: #2196F3; 
+  color: white; 
+}
+
+.completed .status-badge { 
+  background: #4CAF50; 
+  color: white; 
+}
+
+.failed .status-badge { 
+  background: #F44336; 
+  color: white; 
+}
