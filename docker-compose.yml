@@ -12,8 +12,3 @@ services:
       - --smp 1
       - --overprovisioned
       - --set redpanda.enable_transactions=true
-
-  # mongodb:
-  #   image: mongo:7.0
-  #   ports:
-  #     - "27017:27017"
